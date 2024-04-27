@@ -12,7 +12,7 @@ group_localization <- function(localization){
     return (localization |> group_by(nazwa_pozycja_2))
 }
 split_poland <- split_localization(poland)
-split_masovian <- split_localizations(masovian_voievoidship)
+split_masovian <- split_localization(masovian_voievoidship)
 groups_pl <- group_localization(poland)
 groups_masovian <- group_localization(masovian_voievoidship)
 
