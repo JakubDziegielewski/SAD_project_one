@@ -5,7 +5,7 @@ data$opis_okres <- as.Date(paste(substring(data$opis_okres, 1, 4), substring(dat
 important_columns <- data[c("nazwa_pozycja_2", "opis_okres", "wartosc", "jednostka_terytorialna")]
 masovian_voievoidship <- important_columns[important_columns$jednostka_terytorialna == "MAZOWIECKIE",]
 poland <- important_columns[important_columns$jednostka_terytorialna == "POLSKA",]
-split_localizations <- function(localization){
+split_localization <- function(localization){
     return (localization |> split(localization$nazwa_pozycja_2))
 }
 group_localization <- function(localization){
@@ -31,3 +31,6 @@ print_inflation <- function(df){
 }
 print_inflation(groups_masovian)
 print_inflation(groups_pl)
+plot_prices(split_masovian)
+plot_prices(split_poland)
+
