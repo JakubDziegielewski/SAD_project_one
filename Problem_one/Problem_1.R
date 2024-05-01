@@ -37,7 +37,7 @@ create_plot_for_every_group <- function(group){
     list_of_products <- split(group, group$nazwa_pozycja_2)
     for(product in list_of_products){
         print(product  |> ggplot(aes(x = opis_okres, y = wartosc)) + 
-                  geom_point() + geom_line() +
+                  geom_point() + geom_smooth(method = "lm", formula = y ~ poly(x, 3)) +
                   scale_y_continuous(labels = scales::number_format(accuracy = 0.1)) +
                   labs(title = "Cena produktu w ostatnim roku", subtitle = paste(product$nazwa_pozycja_2, "\n", "lokalizacja: ", product$jednostka_terytorialna, sep = ""), x = "Okres", y = "Cena"))
     }
